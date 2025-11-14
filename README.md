@@ -13,9 +13,18 @@ will create a .gitignore file for python.
 ```
 ignore rust
 ```
-will create a .gitignore for rust and so on and so forth. 
+will create a .gitignore for rust. 
 
-You can call it multiple times and it will add them together into a single file. 
+```
+ignore r
+```
+
+```
+```
+will create a .gitignore for R and so on and so forth.
+
+If you're working on a project that handles multiple languages then you can just call each one and it'll append to the .gitignore.
+
 
 
 # Installation	
