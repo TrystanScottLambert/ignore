@@ -9,13 +9,12 @@ pub enum IgnoreType {
 }
 /// Reads the git ignore .dat files in data/
 fn read_ignore_template(which: IgnoreType) -> String {
-    let template_file = match which {
-        IgnoreType::Python => "./src/data/python.dat",
-        IgnoreType::Rust => "./src/data/rust.dat",
-        IgnoreType::R => "./src/data/r.dat",
-        IgnoreType::Custom => "./src/data/my_own.dat",
-    };
-    fs::read_to_string(template_file).expect("Core tempalates not found.")
+    match which {
+        IgnoreType::Python => include_str!("data/python.dat").to_string(),
+        IgnoreType::Rust => include_str!("data/rust.dat").to_string(),
+        IgnoreType::R => include_str!("data/r.dat").to_string(),
+        IgnoreType::Custom => include_str!("data/my_own.dat").to_string(),
+    }
 }
 
 pub fn write_template(which: IgnoreType) {
