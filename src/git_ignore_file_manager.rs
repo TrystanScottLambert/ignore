@@ -1,8 +1,5 @@
 /// Module for finding appending and writing gitignore files.
-use std::{
-    fs::{self, OpenOptions},
-    io::Write,
-};
+use std::fs;
 
 pub enum IgnoreType {
     Python,
@@ -24,7 +21,6 @@ fn read_ignore_template(which: IgnoreType) -> String {
 pub fn write_template(which: IgnoreType) {
     let mut existing_git = fs::read_to_string(".gitignore").unwrap_or_default();
     let header = read_ignore_template(IgnoreType::Custom);
-    println!("{header}");
     if !existing_git.as_str().contains(header.as_str()) {
         existing_git = format!("{header}\n{existing_git}");
     }
